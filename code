@@ -1,0 +1,89 @@
+![Language](https://img.shields.io/badge/language-c%23-9cf)
+<br>
+using System;
+namespace hello
+{
+    class hello
+    {
+        static void Main(string[] args)
+        {
+            int age = 0; int c_year = 0; int c_hap_m_d = 0; int man_age = 0;
+            string this_year = ""; string gender2 = "";
+
+            Console.WriteLine("주민번호 13자리를 입력하세요");
+            string s = Console.ReadLine();
+
+            int year = int.Parse(s.Substring(0, 2));
+            int month = int.Parse(s.Substring(2, 2));
+            int day = int.Parse(s.Substring(4, 2));
+            int gender = int.Parse(s.Substring(6, 1));
+            int hap_m_d = int.Parse(s.Substring(2, 4));
+
+            this_year = Convert.ToString(DateTime.Now);
+            c_year = int.Parse(this_year.Substring(0, 4));
+            c_hap_m_d= int.Parse(this_year.Substring(5, 2)+this_year.Substring(8,2));
+            year = Calc_Year(year, gender);
+            age = Calc_Age(year, c_year);
+            gender2 = Calc_Gender(gender);
+            man_age = Calc_Man_Age(hap_m_d, c_hap_m_d, year, c_year);
+
+            Console.WriteLine("년도는 : {0}", year);
+            Console.WriteLine("월은 {0}", month);
+            Console.WriteLine("일은 {0}", day);
+            Console.WriteLine("올해 나이는 {0}", age);
+            Console.WriteLine("만 나이는 {0}", man_age);
+            Console.WriteLine("성별은 {0}", gender2);
+        }
+        
+
+        public static int Calc_Year(int a1, int b1)
+        {
+            int hap = 0;
+            if(b1 == 3 || b1 == 4)
+            {
+                hap = 2000 + a1;
+            }
+            else
+            {
+                hap = 1900 + a1;
+            }
+
+            return hap;
+        }
+        public static int Calc_Age(int a2, int b2)
+        {
+            int age2 = b2 - a2 + 1;
+            return age2;
+        }
+
+        public static string Calc_Gender(int a3)
+        {
+            string G = "";
+            if(a3%2==1)
+            {
+                G = "남자";
+            }
+            else
+            {
+                G = "여자";
+            }
+
+            return G;
+        }
+
+        public static int Calc_Man_Age(int a4, int b4, int c4, int d4)
+        {
+            int MA = 0;
+            if(b4>=a4)
+            {
+                MA = d4 - c4;
+            }
+            else
+            {
+                MA = d4 - c4 - 1;
+            }
+
+            return MA;
+        }
+    }
+}

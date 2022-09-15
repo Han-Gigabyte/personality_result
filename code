@@ -1,5 +1,3 @@
-![Language](https://img.shields.io/badge/language-c%23-9cf)
-<br>
 using System;
 namespace hello
 {
